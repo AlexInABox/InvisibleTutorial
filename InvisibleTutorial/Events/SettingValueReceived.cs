@@ -39,8 +39,14 @@ namespace InvisibleTutorial.Events
                 {
                     // Player is already invisible; remove from the list and reset scale
                     _invisiblePlayers.Remove(player.Id);
-                    player.SetFakeScale(new UnityEngine.Vector3(1, 1, 1), filteredListOfPlayers);
-                    //player.SetFakeScale(player.Scale, filteredListOfPlayers);
+                    var currentScale = player.Scale;
+                    player.Scale = new UnityEngine.Vector3(
+                        currentScale.x,
+                        currentScale.y,
+                        currentScale.z + 0.001 //theres a bug in exiled... (https://github.com/ExMod-Team/EXILED/blob/15ffcc69ced413b72c1f702944fee6f524ad6de2/EXILED/Exiled.API/Features/Player.cs#L2087)
+                    );
+                    player.SetFakeScale(currentScale, filteredListOfPlayers);
+                    player.Scale = currentScale;
                     Log.Debug($"Player {player.Id} is now visible.");
                 }
                 else
