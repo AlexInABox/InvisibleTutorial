@@ -5,6 +5,7 @@ namespace InvisibleTutorial.Events
     using Exiled.API.Features;
     using PlayerRoles;
     using System.Numerics;
+    using System.Collections.Generic;
 
     internal sealed class SettingValueReceived
     {
@@ -21,15 +22,32 @@ namespace InvisibleTutorial.Events
             }
         }
 
+        private readonly HashSet<int> _invisiblePlayers = new();
+
         private void ToggleInvisibility(Player player)
         {
             Log.Debug("Trying to toggle invisibility for player!");
+
             if (player.Role is FpcRole fpc && player.Role == RoleTypeId.Tutorial)
             {
-                //fpc.IsInvisible = !fpc.IsInvisible;
-                player.SetFakeScale(new Vector3(0, 0, 0), Player.List.Except([player]));
-                Log.Debug("Toggled invisibility for player!");
+                var filteredListOfPlayers = Player.List.Where(x => x != player).ToList();
+
+                if (_invisiblePlayers.Contains(player.Id))
+                {
+                    // Player is already invisible; remove from the list and reset scale
+                    _invisiblePlayers.Remove(player.Id);
+                    player.SetFakeScale(player.Scale, filteredListOfPlayers);
+                    Log.Debug($"Player {player.Id} is now visible.");
+                }
+                else
+                {
+                    // Player is not invisible; add to the list and set scale to 0
+                    _invisiblePlayers.Add(player.Id);
+                    player.SetFakeScale(new Vector3(0, 0, 0), filteredListOfPlayer);
+                    Log.Debug($"Player {player.Id} is now invisible.");
+                }
             }
         }
+
     }
 }
