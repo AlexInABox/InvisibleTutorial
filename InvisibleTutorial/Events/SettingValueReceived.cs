@@ -39,7 +39,8 @@ namespace InvisibleTutorial.Events
                 {
                     // Player is already invisible; remove from the list and reset scale
                     _invisiblePlayers.Remove(player.Id);
-                    player.SetFakeScale(player.Scale, filteredListOfPlayers);
+                    player.SetFakeScale(new UnityEngine.Vector3(1, 1, 1), filteredListOfPlayers);
+                    //player.SetFakeScale(player.Scale, filteredListOfPlayers);
                     Log.Debug($"Player {player.Id} is now visible.");
                 }
                 else
