@@ -27,7 +27,7 @@ namespace InvisibleTutorial.Events
             if (player.Role is FpcRole fpc && player.Role == RoleTypeId.Tutorial)
             {
                 //fpc.IsInvisible = !fpc.IsInvisible;
-                player.SetFakeScale(new Vector3(0, 0, 0), Player.List());
+                player.SetFakeScale(new Vector3(0, 0, 0), Player.List.Except([player]));
                 Log.Debug("Toggled invisibility for player!");
             }
         }
