@@ -21,8 +21,12 @@ namespace InvisibleTutorial.Events
 
         private void ToggleInvisibility(Player player)
         {
+            Log.Debug("Trying to toggle invisibility for player!");
             if (player.Role is FpcRole fpc && player.Role == RoleTypeId.Tutorial)
+            {
                 fpc.IsInvisible = !fpc.IsInvisible;
+                Log.Debug("Toggled invisibility for player!");
+            }
         }
     }
 }
