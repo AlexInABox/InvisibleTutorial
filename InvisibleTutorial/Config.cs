@@ -20,6 +20,24 @@ namespace InvisibleTutorial
         /// <inheritdoc />
         public bool Debug { get; set; }
 
+        [Description("Hint displayed when a player goes invisible.")]
+        public Message InvisibilityEnabled { get; set; } = new()
+        {
+            Type = MessageType.Hint,
+            Content = "<b>You <color=green>are</color> now invisible.</b>",
+            Duration = 3,
+            Show = true,
+        };
+
+        [Description("Hint displayed when a player is visible again.")]
+        public Message InvisibilityDisabled { get; set; } = new()
+        {
+            Type = MessageType.Hint,
+            Content = "<b>You <color=red>are not</color> invisible anymore.</b>",
+            Duration = 3,
+            Show = true,
+        };
+
         [Description("The unique id of the setting.")]
         public int KeybindId { get; set; } = 201;
     }
