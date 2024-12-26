@@ -8,6 +8,7 @@
     using Exiled.Events;
     using Events;
     using UserSettings.ServerSpecific;
+    using Exiled.API.Features.Core.UserSettings;
 
     public class InvisibleTutorial : Plugin<Config>
     {
