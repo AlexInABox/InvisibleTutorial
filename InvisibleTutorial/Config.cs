@@ -7,7 +7,7 @@ namespace InvisibleTutorial
     using Exiled.API.Features;
     using Exiled.API.Interfaces;
 
-    using InvisibleTutorial.Enums;
+    using Enums;
 
 
     /// <inheritdoc cref="IConfig"/>
