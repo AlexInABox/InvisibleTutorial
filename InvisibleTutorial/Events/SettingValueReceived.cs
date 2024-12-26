@@ -45,7 +45,7 @@ namespace InvisibleTutorial.Events
                 {
                     // Player is not invisible; add to the list and set scale to 0
                     _invisiblePlayers.Add(player.Id);
-                    player.SetFakeScale(new Vector3(0, 0, 0), filteredListOfPlayer);
+                    player.SetFakeScale(new Vector3(0, 0, 0), filteredListOfPlayers);
                     Log.Debug($"Player {player.Id} is now invisible.");
                 }
             }
