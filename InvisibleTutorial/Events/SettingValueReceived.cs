@@ -3,6 +3,7 @@ namespace InvisibleTutorial.Events
     using UserSettings.ServerSpecific;
     using Exiled.API.Features.Roles;
     using Exiled.API.Features;
+    using PlayerRoles;
 
     internal sealed class SettingValueReceived
     {
