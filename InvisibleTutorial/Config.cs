@@ -23,7 +23,7 @@ namespace InvisibleTutorial
         public Hint InvisibilityEnabled { get; private set; } = new("<b>You <color=green>are</color> now invisible.</b>", 3);
 
         [Description("Hint displayed when a player is visible again.")]
-        public Hint InvisibilityEnabled { get; private set; } = new("<b>You <color=red>are not</color> invisible anymore.</b>", 3);
+        public Hint InvisibilityDisabled { get; private set; } = new("<b>You <color=red>are not</color> invisible anymore.</b>", 3);
 
         [Description("The unique id of the setting.")]
         public int KeybindId { get; set; } = 201;
