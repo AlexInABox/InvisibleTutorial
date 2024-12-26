@@ -2,6 +2,7 @@ namespace InvisibleTutorial.Events
 {
     using UserSettings.ServerSpecific;
     using Exiled.API.Features.Roles;
+    using Exiled.API.Features;
 
     internal sealed class SettingValueReceived
     {
@@ -17,7 +18,7 @@ namespace InvisibleTutorial.Events
             }
         }
 
-        private ToggleInvisibility(Player player)
+        private void ToggleInvisibility(Player player)
         {
             if (player.Role is FpcRole fpc && player.Role == RoleTypeId.Tutorial)
                 fpc.IsInvisible = !fpc.IsInvisible;
