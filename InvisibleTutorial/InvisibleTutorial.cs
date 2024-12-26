@@ -16,7 +16,7 @@
         public override string Prefix => "InvisibleTutorial";
         public override string Name => "InvisibleTutorial";
         public override string Author => "AlexInABox";
-        public override Version Version => new Version(1, 0, 0);
+        public override Version Version => new Version(1, 0, 1);
 
         private static InvisibleTutorial Singleton;
         public static InvisibleTutorial Instance => Singleton;

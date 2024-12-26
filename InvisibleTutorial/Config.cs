@@ -26,7 +26,7 @@ namespace InvisibleTutorial
         public Message InvisibilityEnabled { get; set; } = new()
         {
             Content = "<b>You <color=green>are</color> now invisible.</b>",
-            Duration = 3,
+            Duration = 3f,
             Show = true,
         };
 
@@ -34,7 +34,7 @@ namespace InvisibleTutorial
         public Message InvisibilityDisabled { get; set; } = new()
         {
             Content = "<b>You <color=red>are not</color> invisible anymore.</b>",
-            Duration = 3,
+            Duration = 3f,
             Show = true,
         };
 
