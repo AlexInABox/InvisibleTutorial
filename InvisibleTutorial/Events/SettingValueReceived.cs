@@ -7,6 +7,7 @@ namespace InvisibleTutorial.Events
     using System.Numerics;
     using System.Collections.Generic;
     using System.Linq;
+    using UnityEngine;
 
 
     internal sealed class SettingValueReceived
@@ -45,7 +46,7 @@ namespace InvisibleTutorial.Events
                 {
                     // Player is not invisible; add to the list and set scale to 0
                     _invisiblePlayers.Add(player.Id);
-                    player.SetFakeScale(new Vector3(0, 0, 0), filteredListOfPlayers);
+                    player.SetFakeScale(new UnityEngine.Vector3(0, 0, 0), filteredListOfPlayers);
                     Log.Debug($"Player {player.Id} is now invisible.");
                 }
             }
