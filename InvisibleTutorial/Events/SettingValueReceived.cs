@@ -43,7 +43,7 @@ namespace InvisibleTutorial.Events
                     player.Scale = new UnityEngine.Vector3(
                         currentScale.x,
                         currentScale.y,
-                        currentScale.z + 0.001 //theres a bug in exiled... (https://github.com/ExMod-Team/EXILED/blob/15ffcc69ced413b72c1f702944fee6f524ad6de2/EXILED/Exiled.API/Features/Player.cs#L2087)
+                        currentScale.z + 0.001F //theres a bug in exiled... (https://github.com/ExMod-Team/EXILED/pull/349)
                     );
                     player.SetFakeScale(currentScale, filteredListOfPlayers);
                     player.Scale = currentScale;
