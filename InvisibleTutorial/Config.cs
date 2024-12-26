@@ -7,6 +7,8 @@ namespace InvisibleTutorial
     using Exiled.API.Features;
     using Exiled.API.Interfaces;
 
+    using InvisibleTutorial.Enums;
+
 
     /// <inheritdoc cref="IConfig"/>
     public sealed class Config : IConfig
@@ -23,7 +25,6 @@ namespace InvisibleTutorial
         [Description("Hint displayed when a player goes invisible.")]
         public Message InvisibilityEnabled { get; set; } = new()
         {
-            Type = MessageType.Hint,
             Content = "<b>You <color=green>are</color> now invisible.</b>",
             Duration = 3,
             Show = true,
@@ -32,7 +33,6 @@ namespace InvisibleTutorial
         [Description("Hint displayed when a player is visible again.")]
         public Message InvisibilityDisabled { get; set; } = new()
         {
-            Type = MessageType.Hint,
             Content = "<b>You <color=red>are not</color> invisible anymore.</b>",
             Duration = 3,
             Show = true,

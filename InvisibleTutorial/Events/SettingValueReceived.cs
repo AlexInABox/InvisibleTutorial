@@ -8,6 +8,7 @@ namespace InvisibleTutorial.Events
     using System.Collections.Generic;
     using System.Linq;
     using UnityEngine;
+    using Enums;
 
 
     internal sealed class SettingValueReceived
