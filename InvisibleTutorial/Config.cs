@@ -19,5 +19,8 @@ namespace InvisibleTutorial
 
         /// <inheritdoc />
         public bool Debug { get; set; }
+
+        [Description("The unique id of the setting.")]
+        public int KeybindId { get; set; } = 201;
     }
 }

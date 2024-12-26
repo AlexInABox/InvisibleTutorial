@@ -7,13 +7,14 @@ namespace InvisibleTutorial.Events
 
     internal sealed class SettingValueReceived
     {
+        private readonly Config _config;
         public void OnSettingValueReceived(ReferenceHub hub, ServerSpecificSettingBase settingBase)
         {
             Log.Debug("Received hotkey!");
             if (!Player.TryGet(hub, out Player player))
                 return;
 
-            if (settingBase is SSKeybindSetting keyindSetting && keyindSetting.SyncIsPressed)
+            if (settingBase is SSKeybindSetting keyindSetting && keyindSetting.SettingId == InvisibleTutorial.Instance.Config.KeybindId && keyindSetting.SyncIsPressed)
             {
                 ToggleInvisibility(player);
             }
