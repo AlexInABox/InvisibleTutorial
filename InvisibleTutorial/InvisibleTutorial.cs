@@ -22,6 +22,7 @@
         public static InvisibleTutorial Instance => Singleton;
         private SettingValueReceived settingValueReceived;
         private Verified verified;
+        private Spawned spawned;
         public override PluginPriority Priority { get; } = PluginPriority.Last;
         public override void OnEnabled()
         {
@@ -30,6 +31,7 @@
 
             settingValueReceived = new SettingValueReceived();
             verified = new Verified();
+            spawned = new Spawned();
 
             HeaderSetting header = new HeaderSetting("InvisibleTutorial");
             IEnumerable<SettingBase> settingBases = new SettingBase[]
@@ -43,6 +45,7 @@
 
             ServerSpecificSettingsSync.ServerOnSettingValueReceived += settingValueReceived.OnSettingValueReceived;
             Exiled.Events.Handlers.Player.Verified += verified.OnVerified;
+            Exiled.Events.Handlers.Player.Spawned += spawned.OnSpawned;
 
             base.OnEnabled();
         }
@@ -53,6 +56,7 @@
 
             ServerSpecificSettingsSync.ServerOnSettingValueReceived -= settingValueReceived.OnSettingValueReceived;
             Exiled.Events.Handlers.Player.Verified -= verified.OnVerified;
+            Exiled.Events.Handlers.Player.Spawned -= spawned.OnSpawned;
 
             base.OnDisabled();
         }

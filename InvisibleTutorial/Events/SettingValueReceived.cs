@@ -24,43 +24,50 @@ namespace InvisibleTutorial.Events
             }
         }
 
-        private readonly HashSet<int> _invisiblePlayers = new();
+        public readonly HashSet<int> _invisiblePlayers = new();
 
         private void ToggleInvisibility(Player player)
         {
             Log.Debug("Trying to toggle invisibility for player!");
 
-            if (player.Role is FpcRole fpc && player.Role == RoleTypeId.Tutorial)
+            if (player.Role == RoleTypeId.Tutorial)
             {
-                var filteredListOfPlayers = Player.List.Where(x => x != player).ToList();
-
                 if (_invisiblePlayers.Contains(player.Id))
-                {
-                    // Player is already invisible; remove from the list and reset scale
-                    _invisiblePlayers.Remove(player.Id);
-                    var currentScale = player.Scale;
-                    player.Scale = new UnityEngine.Vector3(
-                        currentScale.x,
-                        currentScale.y,
-                        currentScale.z + 0.001F //theres a bug in exiled... (https://github.com/ExMod-Team/EXILED/pull/349)
-                    );
-                    player.SetFakeScale(currentScale, filteredListOfPlayers);
-                    player.Scale = currentScale;
-
-                    player.ShowHint(InvisibleTutorial.Instance.Config.InvisibilityDisabled);
-                    Log.Debug($"Player {player.Id} is now visible.");
-                }
+                    MakeVisible(player);
                 else
-                {
-                    // Player is not invisible; add to the list and set scale to 0
-                    _invisiblePlayers.Add(player.Id);
-                    player.SetFakeScale(new UnityEngine.Vector3(0, 0, 0), filteredListOfPlayers);
-
-                    player.ShowHint(InvisibleTutorial.Instance.Config.InvisibilityEnabled);
-                    Log.Debug($"Player {player.Id} is now invisible.");
-                }
+                    MakeInvisible(player);
             }
         }
 
+        public void MakeVisible(Player player)
+        {
+            var filteredListOfPlayers = Player.List.Where(x => x != player).ToList();
+
+            // Player is already invisible; remove from the list and reset scale
+            _invisiblePlayers.Remove(player.Id);
+            var currentScale = player.Scale;
+            player.Scale = new UnityEngine.Vector3(
+                currentScale.x,
+                currentScale.y,
+                currentScale.z + 0.001F //theres a bug in exiled... (https://github.com/ExMod-Team/EXILED/pull/349)
+            );
+            player.SetFakeScale(currentScale, filteredListOfPlayers);
+            player.Scale = currentScale;
+
+            player.ShowHint(InvisibleTutorial.Instance.Config.InvisibilityDisabled);
+            Log.Debug($"Player {player.Id} is now visible.");
+        }
+
+        private void MakeInvisible(Player player)
+        {
+            var filteredListOfPlayers = Player.List.Where(x => x != player).ToList();
+
+            // Player is not invisible; add to the list and set scale to 0
+            _invisiblePlayers.Add(player.Id);
+            player.SetFakeScale(new UnityEngine.Vector3(0, 0, 0), filteredListOfPlayers);
+
+            player.ShowHint(InvisibleTutorial.Instance.Config.InvisibilityEnabled);
+            Log.Debug($"Player {player.Id} is now invisible.");
+        }
     }
 }
