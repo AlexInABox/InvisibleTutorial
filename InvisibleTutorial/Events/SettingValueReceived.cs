@@ -48,7 +48,7 @@ namespace InvisibleTutorial.Events
                     player.SetFakeScale(currentScale, filteredListOfPlayers);
                     player.Scale = currentScale;
 
-                    player.ShowHint(_config.InvisibilityDisabled);
+                    player.ShowHint("off test");
                     Log.Debug($"Player {player.Id} is now visible.");
                 }
                 else
@@ -57,7 +57,7 @@ namespace InvisibleTutorial.Events
                     _invisiblePlayers.Add(player.Id);
                     player.SetFakeScale(new UnityEngine.Vector3(0, 0, 0), filteredListOfPlayers);
 
-                    player.ShowHint(_config.InvisibilityEnabled);
+                    player.ShowHint("on test");
                     Log.Debug($"Player {player.Id} is now invisible.");
                 }
             }
