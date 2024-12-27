@@ -47,7 +47,7 @@ namespace InvisibleTutorial.Events
                     player.SetFakeScale(currentScale, filteredListOfPlayers);
                     player.Scale = currentScale;
 
-                    player.ShowHint(ArtificialCassie.Instance.Config.InvisibilityDisabled);
+                    player.ShowHint(InvisibleTutorial.Instance.Config.InvisibilityDisabled);
                     Log.Debug($"Player {player.Id} is now visible.");
                 }
                 else
@@ -56,7 +56,7 @@ namespace InvisibleTutorial.Events
                     _invisiblePlayers.Add(player.Id);
                     player.SetFakeScale(new UnityEngine.Vector3(0, 0, 0), filteredListOfPlayers);
 
-                    player.ShowHint(ArtificialCassie.Instance.Config.InvisibilityEnabled);
+                    player.ShowHint(InvisibleTutorial.Instance.Config.InvisibilityEnabled);
                     Log.Debug($"Player {player.Id} is now invisible.");
                 }
             }
