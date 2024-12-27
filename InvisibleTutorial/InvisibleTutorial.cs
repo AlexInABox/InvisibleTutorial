@@ -31,7 +31,7 @@
 
             settingValueReceived = new SettingValueReceived();
             verified = new Verified();
-            spawned = new Spawned();
+            spawned = new Spawned(settingValueReceived);
 
             HeaderSetting header = new HeaderSetting("InvisibleTutorial");
             IEnumerable<SettingBase> settingBases = new SettingBase[]
