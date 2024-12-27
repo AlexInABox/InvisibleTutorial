@@ -12,7 +12,6 @@ namespace InvisibleTutorial.Events
 
     internal sealed class SettingValueReceived
     {
-        private readonly Config _config;
         public void OnSettingValueReceived(ReferenceHub hub, ServerSpecificSettingBase settingBase)
         {
             Log.Debug("Received hotkey!");
@@ -48,7 +47,7 @@ namespace InvisibleTutorial.Events
                     player.SetFakeScale(currentScale, filteredListOfPlayers);
                     player.Scale = currentScale;
 
-                    player.ShowHint(_config.InvisibilityDisabled);
+                    player.ShowHint(ArtificialCassie.Instance.Config.InvisibilityDisabled);
                     Log.Debug($"Player {player.Id} is now visible.");
                 }
                 else
@@ -57,7 +56,7 @@ namespace InvisibleTutorial.Events
                     _invisiblePlayers.Add(player.Id);
                     player.SetFakeScale(new UnityEngine.Vector3(0, 0, 0), filteredListOfPlayers);
 
-                    player.ShowHint(_config.InvisibilityEnabled);
+                    player.ShowHint(ArtificialCassie.Instance.Config.InvisibilityEnabled);
                     Log.Debug($"Player {player.Id} is now invisible.");
                 }
             }
