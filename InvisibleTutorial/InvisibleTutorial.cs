@@ -37,7 +37,7 @@
             IEnumerable<SettingBase> settingBases = new SettingBase[]
             {
                 header,
-                new KeybindSetting(Config.KeybindId, "Toggle invisiblity as Tutorial!", default, hintDescription: "Pressing this keybind toggles your invisiblity when in tutorial!"),
+                new KeybindSetting(Config.KeybindId, "Toggle invisibility as Tutorial!", default, hintDescription: "Pressing this keybinding toggles your invisibility when in tutorial!"),
             };
 
             SettingBase.Register(settingBases);
