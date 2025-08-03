@@ -1,3 +1,7 @@
+using System;
+using Exiled.API.Extensions;
+using Mirror;
+
 namespace InvisibleTutorial.Events
 {
     using UserSettings.ServerSpecific;
@@ -59,7 +63,6 @@ namespace InvisibleTutorial.Events
             // Player is not invisible; add to the list and set scale to 0
             _invisiblePlayers.Add(player.Id);
             player.SetFakeScale(new UnityEngine.Vector3(0, 0, 0), filteredListOfPlayers);
-
             player.ShowHint(InvisibleTutorial.Instance.Config.InvisibilityEnabled);
             Log.Debug($"Player {player.Id} is now invisible.");
         }
