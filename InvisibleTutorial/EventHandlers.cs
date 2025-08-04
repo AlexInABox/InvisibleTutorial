@@ -3,6 +3,7 @@ using CustomPlayerEffects;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Handlers;
 using LabApi.Features.Wrappers;
+using PlayerRoles;
 using UserSettings.ServerSpecific;
 
 namespace InvisibleTutorial;
@@ -43,6 +44,7 @@ public static class EventHandlers
 
     private static void TogglePlayerInvisibility(Player player)
     {
+        if (player.Role != RoleTypeId.Tutorial) return;
         bool isInvisible = false;
         if (PlayerInvisibilityStates.TryGetValue(player.PlayerId, out bool currentState)) isInvisible = currentState;
 

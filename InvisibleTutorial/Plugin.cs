@@ -15,7 +15,7 @@ public class Plugin : Plugin<Config>
         "InvisibleTutorial";
 
     public override string Author { get; } = "AlexInABox";
-    public override Version Version { get; } = new(1, 1, 0);
+    public override Version Version { get; } = new(1, 1, 1);
     public override Version RequiredApiVersion { get; } = new(LabApiProperties.CompiledVersion);
     public Translation Translation { get; private set; }
 
