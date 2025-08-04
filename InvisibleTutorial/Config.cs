@@ -1,31 +1,11 @@
-namespace InvisibleTutorial
+using System.ComponentModel;
+
+namespace InvisibleTutorial;
+
+public class Config
 {
-    using System.ComponentModel;
-    using System.IO;
-    using System.Collections.Generic;
+    public bool Debug { get; set; } = false;
 
-    using Exiled.API.Features;
-    using Exiled.API.Interfaces;
-
-    /// <inheritdoc cref="IConfig"/>
-    public sealed class Config : IConfig
-    {
-        public Config()
-        {
-        }
-        /// <inheritdoc/>
-        public bool IsEnabled { get; set; } = true;
-
-        /// <inheritdoc />
-        public bool Debug { get; set; }
-
-        [Description("Hint displayed when a player goes invisible.")]
-        public Hint InvisibilityEnabled { get; private set; } = new("<b>You <color=green>are</color> now invisible.</b>", 3);
-
-        [Description("Hint displayed when a player is visible again.")]
-        public Hint InvisibilityDisabled { get; private set; } = new("<b>You <color=red>are not</color> invisible anymore.</b>", 3);
-
-        [Description("The unique id of the setting.")]
-        public int KeybindId { get; set; } = 201;
-    }
+    [Description("The ID of the keybind setting. This should be unique for each plugin.")]
+    public int KeybindId { get; set; } = 300;
 }

@@ -1,28 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-  <PropertyGroup>
-    <TargetFramework>net4.8.1</TargetFramework>
-    <LangVersion>12.0</LangVersion>
-  </PropertyGroup>
+    <PropertyGroup>
+        <TargetFramework>net4.8.1</TargetFramework>
+        <LangVersion>12.0</LangVersion>
+        <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    </PropertyGroup>
 
-  <ItemGroup>
-    <Reference Include="Assembly-CSharp" HintPath="$(REFERENCES_PATH)\Assembly-CSharp-Publicized.dll" Private="false" />
-    <Reference Include="Assembly-CSharp-firstpass" HintPath="$(REFERENCES_PATH)\Assembly-CSharp-firstpass.dll" Private="false" />
-    <Reference Include="CommandSystem.Core" HintPath="$(REFERENCES_PATH)\CommandSystem.Core.dll" Private="false" />
-    <Reference Include="Mirror" HintPath="$(REFERENCES_PATH)\Mirror.dll" Private="false" />
-    <Reference Include="NorthwoodLib" HintPath="$(REFERENCES_PATH)\NorthwoodLib.dll" Private="false" />
-    <Reference Include="PluginAPI" HintPath="$(REFERENCES_PATH)\PluginAPI.dll" Private="false" />
-    <Reference Include="UnityEngine" HintPath="$(REFERENCES_PATH)\UnityEngine.dll" Private="false" />
-    <Reference Include="UnityEngine.CoreModule" HintPath="$(REFERENCES_PATH)\UnityEngine.CoreModule.dll" Private="false" />
-    <Reference Include="UnityEngine.PhysicsModule" HintPath="$(REFERENCES_PATH)\UnityEngine.PhysicsModule.dll" Private="false" />
-  </ItemGroup>
+    <ItemGroup>
+        <Reference Include="Assembly-CSharp" HintPath="$(EXILED_REFERENCES)\Assembly-CSharp.dll" Publicize="true"/>
+        <Reference Include="Mirror" HintPath="$(EXILED_REFERENCES)\Mirror.dll" Private="false" Publicize="true"/>
+        <Reference Include="UnityEngine.CoreModule" HintPath="$(EXILED_REFERENCES)\UnityEngine.CoreModule.dll" Private="false"/>
+        <Reference Include="CommandSystem.Core" HintPath="$(EXILED_REFERENCES)\CommandSystem.Core.dll" Private="false"/>
+    </ItemGroup>
 
-  <ItemGroup>
-    <PackageReference Include="ExMod.Exiled" Version="9.7.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Reference Include="Exiled.API" />
-    <Reference Include="Exiled.Events" />
-    <Reference Include="Exiled.Permissions" />
-  </ItemGroup>
+    <ItemGroup>
+        <PackageReference Include="BepInEx.AssemblyPublicizer.MSBuild" Version="0.4.3" PrivateAssets="all" ExcludeAssets="runtime" ReferenceOutputAssembly="false" Private="true"/>
+        <PackageReference Include="Northwood.LabAPI" Version="1.1.1"/>
+    </ItemGroup>
 </Project>
