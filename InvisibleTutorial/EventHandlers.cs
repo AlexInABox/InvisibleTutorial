@@ -44,7 +44,7 @@ public static class EventHandlers
 
     private static void TogglePlayerInvisibility(Player player)
     {
-        if (player.Role != RoleTypeId.Tutorial) return;
+        if (player.Role != RoleTypeId.Tutorial || player.CustomInfo.ToLower() == "deathsquad") return;
         bool isInvisible = false;
         if (PlayerInvisibilityStates.TryGetValue(player.PlayerId, out bool currentState)) isInvisible = currentState;
 
