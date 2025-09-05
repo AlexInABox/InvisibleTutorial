@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using CustomPlayerEffects;
 using LabApi.Events.Arguments.PlayerEvents;
 using LabApi.Events.Handlers;
+using LabApi.Features.Permissions;
 using LabApi.Features.Wrappers;
 using PlayerRoles;
 using UserSettings.ServerSpecific;
@@ -44,7 +45,13 @@ public static class EventHandlers
 
     private static void TogglePlayerInvisibility(Player player)
     {
-        if (player.Role != RoleTypeId.Tutorial || player.CustomInfo.ToLower() == "deathsquad") return;
+        if (!player.HasPermissions(new[] { "invisibletutorial" }))
+        {
+            player.SendHint(Plugin.Instance.Translation.NoPermission);
+            return;
+        }
+        
+        if (player.Role != RoleTypeId.Tutorial) return;
         bool isInvisible = false;
         if (PlayerInvisibilityStates.TryGetValue(player.PlayerId, out bool currentState)) isInvisible = currentState;
 

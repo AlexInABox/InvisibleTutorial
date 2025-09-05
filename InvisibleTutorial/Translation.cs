@@ -19,4 +19,7 @@ public class Translation
 
     [Description("Hint displayed when a player is visible again.")]
     public string InvisibilityDisabled { get; set; } = "<b><color=red>Du bist nicht mehr unsichtbar!</color></b>";
+    
+    [Description("Message displayed when a player lacks permission to use the feature.")]
+    public string NoPermission { get; set; } = "<b><color=red>Du hast keine Berechtigung, diese Funktion zu nutzen!</color></b>";
 }
